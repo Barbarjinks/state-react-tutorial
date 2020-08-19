@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Product.css';
 
 export default function Product() {
+    const [cart, setCart] = useState([]);
     return(
         <div className="wrapper"> 
             <div>
-                Shopping Cart: 0 total items.
+                Shopping Cart: {cart.length} total items.
             </div>
             <div>Total: 0</div>
 

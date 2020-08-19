@@ -10,7 +10,7 @@ export default function Product() {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
 
-    function getTotal() {
+    function getTotal(Total) {
         return total.toLocaleString(undefined, currencyOptions)
     };
 

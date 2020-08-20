@@ -1,4 +1,5 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
+import { useDispatch, Provider } from "react-redux";
 import './Product.css';
 
 const currencyOptions = {
@@ -31,9 +32,9 @@ const products = [
 
 function cartReducer(state, action) {
     switch(action.type) {
-        case 'add':
+        case 'ADD':
             return [...state, action.product];
-        case 'remove':
+        case 'REMOVE':
             const productIndex = state.findIndex(item => item.name === action.product.name);
             if(productIndex < 0) {
                 return state;
@@ -49,12 +50,14 @@ function cartReducer(state, action) {
 export default function Product() {
     const [cart, setCart] = useReducer(cartReducer, []);
 
+    const dispatch = useDispatch();
+
     function add(product) {
-        setCart({ product, type: 'add' });
+        setCart({ product, type: 'ADD' });
     }
 
     function remove(product) {
-        setCart({ product, type: 'remove' });
+        setCart({ product, type: 'REMOVE' });
         }
 
     return(
@@ -69,7 +72,7 @@ export default function Product() {
                     <div classname="product">
                         <span role="img" aria-label={product.name}>{product.emoji}</span>
                     </div>
-                    <button onClick={() => add(product)}>Add</button>
+                    <button onClick={() => dispatch(add(product))}>Add</button>
                     <button onClick={() => remove(product)}>Remove</button>
                 </div>
             ))}    

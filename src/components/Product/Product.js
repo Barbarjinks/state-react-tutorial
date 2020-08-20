@@ -33,7 +33,7 @@ export default function Product() {
 
     function add() {
         setCart(['ice cream']);
-        setTotal(5);
+        setTotal(previous => previous +5);
     }
 
     function remove() {
@@ -47,10 +47,17 @@ export default function Product() {
                 Shopping Cart: {cart.length} total items.
             </div>
             <div>Total: {getTotal(total)} </div>
-
-            <div className="product"><span role="img" aria-label="ice cream"> 🍦 </span></div>
-            <button onClick={add}>Add</button> 
-            <button onClick={remove}>Remove</button>
+            <div>
+            {products.map(product => (
+                <div key={product.name}>
+                    <div classname="product">
+                        <span role="img" aria-label={product.name}>{product.emoji}</span>
+                    </div>
+                    <button>Add</button>
+                    <button>Remove</button>
+                </div>
+            ))}    
+            </div>
         </div>
     )
 }

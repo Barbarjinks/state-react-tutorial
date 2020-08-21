@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './components/redux/store';
-import { productAdded } from './components/redux/actions'
+import {productAdded} from './components/redux/actions'
 import * as serviceWorker from './serviceWorker';
 import {  Provider } from 'react';
 
 
-store.dispatch(productAdded());
+store.dispatch(productAdded);
 
 ReactDOM.render(
   <Provider store={store}>

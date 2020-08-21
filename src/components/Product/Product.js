@@ -53,7 +53,9 @@ export default function Product() {
     const dispatch = useDispatch();
 
     function add(product) {
+
         setCart({ product, type: 'ADD' });
+        dispatch()
     }
 
     function remove(product) {

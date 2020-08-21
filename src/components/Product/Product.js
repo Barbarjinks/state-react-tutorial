@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { useDispatch, Provider } from "react-redux";
+import { useDispatch } from "react-redux";
 import './Product.css';
 
 const currencyOptions = {
@@ -69,11 +69,11 @@ export default function Product() {
             <div>
             {products.map(product => (
                 <div key={product.name}>
-                    <div classname="product">
+                    <div className="product">
                         <span role="img" aria-label={product.name}>{product.emoji}</span>
                     </div>
                     <button onClick={() => dispatch(add(product))}>Add</button>
-                    <button onClick={() => remove(product)}>Remove</button>
+                    <button onClick={() => dispatch(remove(product))}>Remove</button>
                 </div>
             ))}    
             </div>
